@@ -5,36 +5,42 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Xart - Play me - Pornhub.com</title>
   <style>
-    body{font-family: "Nunito", "PingFang SC", sans-serif; background:#fff7fb; margin:0; display:flex;align-items:center;justify-content:center;min-height:100vh}
-    .video-card{width:min(92vw,900px);padding:14px;border-radius:22px;background:#fff;box-shadow:0 12px 35px rgba(0,0,0,0.06)}
-    .video-wrap{border-radius:14px;overflow:hidden;background:#000}
-    video{width:100%;height:auto;display:block;background:#000}
-    .video-info{padding:14px 4px 2px}
+    *{box-sizing:border-box}
+    body{font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",Arial,sans-serif;margin:0;background:#fafafa;color:#333}
+    .navbar{position:sticky;top:0;z-index:1000;width:100%;height:64px;display:flex;align-items:center;padding:0 6%;background:rgba(255,255,255,0.96);border-bottom:1px solid #eeeeee;backdrop-filter:blur(6px)}
+    .logo{font-weight:800;font-size:22px;letter-spacing:-0.6px;color:#333}
+    .container{width:88%;max-width:960px;margin:0 auto;padding:0}
+    .back-wrap{padding-top:8px}
+    a.back{display:inline-block;color:#444;background:#fff;padding:8px 12px;border-radius:18px;border:1px solid #eee;box-shadow:0 6px 18px rgba(0,0,0,0.06);text-decoration:none;font-size:13px}
+    a.back:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(0,0,0,0.08);color:#111}
+    .video-card{margin-top:6px;border-radius:14px;overflow:hidden;background:#fff;box-shadow:0 12px 35px rgba(0,0,0,0.06);padding:12px}
+    .video-wrap{background:#000;border-radius:10px;overflow:hidden}
+    iframe, video{width:100%;height:auto;display:block;border:0;aspect-ratio:16/9}
+    .video-info{padding:10px 6px 0}
     .video-title{margin:0;color:#333;font-size:18px;font-weight:700}
     .video-subtitle{margin:6px 0 0;color:#666;font-size:13px}
-    a.back{display:inline-block;margin-bottom:10px;color:#444;background:#fff;padding:8px 12px;border-radius:20px;border:1px solid #eee;box-shadow:0 6px 18px rgba(0,0,0,0.06);text-decoration:none;font-size:13px;transition:transform .15s ease,box-shadow .15s ease}
-    a.back:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(0,0,0,0.08);color:#111}
+    @media (max-width:600px){ .container{width:94%} }
   </style>
 </head>
 <body>
-  <div style="width:100%;max-width:960px;padding:20px;">
-    <a class="back" href="../index.html">← 返回首页</a>
+  <header class="navbar"><div class="logo">Xart</div></header>
+  <main class="container">
+    <div class="back-wrap"><a class="back" href="../index.html">返回首页</a></div>
+
     <div class="video-card">
       <div class="video-wrap">
-  <iframe
-    src="https://player.mediadelivery.net/play/727367/de899abb-421f-49db-aac1-e41b46e99e99"
-    loading="lazy"
-    style="width: 100%; aspect-ratio: 16 / 9; border: 0;"
-    allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
-    allowfullscreen>
-  </iframe>
-</div>
+        <iframe
+          src="https://player.mediadelivery.net/play/727367/de899abb-421f-49db-aac1-e41b46e99e99"
+          loading="lazy"
+          allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
+          allowfullscreen>
+        </iframe>
       </div>
       <div class="video-info">
         <h2 class="video-title">Play me - Pornhub.com</h2>
         <p class="video-subtitle">Play me - Pornhub.com.mp4</p>
       </div>
     </div>
-  </div>
+  </main>
 </body>
 </html>

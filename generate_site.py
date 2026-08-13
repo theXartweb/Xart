@@ -90,20 +90,37 @@ VIDEO_PAGE_TEMPLATE = '''<!DOCTYPE html>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Xart - {title}</title>
   <style>
-    body{{font-family: "Nunito", "PingFang SC", sans-serif; background:#fff7fb; margin:0; display:flex;align-items:center;justify-content:center;min-height:100vh}}
-    .video-card{{width:min(92vw,900px);padding:14px;border-radius:22px;background:#fff;box-shadow:0 12px 35px rgba(0,0,0,0.06)}}
-    .video-wrap{{border-radius:14px;overflow:hidden;background:#000}}
+    /* 顶部导航，风格与首页一致 */
+    .navbar{
+      position:sticky;top:0;z-index:1000;width:100%;height:64px;display:flex;align-items:center;padding:0 6%;background:rgba(255,255,255,0.96);border-bottom:1px solid #eeeeee;backdrop-filter:blur(6px)
+    }
+    .logo{font-weight:800;font-size:22px;color:#333}
+
+    body{{font-family: "Nunito", "PingFang SC", sans-serif; background:#fff7fb; margin:0;}}
+    .page-container{{width:88%;max-width:960px;margin:0 auto;padding:10px 0 40px}}
+
+    /* 返回按钮紧贴顶部 */
+    .back-wrap{{margin-top:6px}}
+    a.back{{display:inline-block;color:#444;background:#fff;padding:8px 12px;border-radius:20px;border:1px solid #eee;box-shadow:0 6px 18px rgba(0,0,0,0.06);text-decoration:none;font-size:13px}}
+    a.back:hover{{transform:translateY(-2px);box-shadow:0 10px 24px rgba(0,0,0,0.08);color:#111}}
+
+    /* 视频区域紧挨返回按钮 */
+    .video-card{{margin-top:6px;border-radius:14px;overflow:hidden;background:#fff;box-shadow:0 12px 35px rgba(0,0,0,0.06);padding:12px}}
+    .video-wrap{{background:#000;border-radius:10px;overflow:hidden}}
     video{{width:100%;height:auto;display:block;background:#000}}
-    .video-info{{padding:14px 4px 2px}}
+
+    .video-info{{padding:10px 6px 0}}
     .video-title{{margin:0;color:#333;font-size:18px;font-weight:700}}
     .video-subtitle{{margin:6px 0 0;color:#666;font-size:13px}}
-    a.back{{display:inline-block;margin-bottom:10px;color:#444;background:#fff;padding:8px 12px;border-radius:20px;border:1px solid #eee;box-shadow:0 6px 18px rgba(0,0,0,0.06);text-decoration:none;font-size:13px;transition:transform .15s ease,box-shadow .15s ease}}
-    a.back:hover{{transform:translateY(-3px);box-shadow:0 10px 24px rgba(0,0,0,0.08);color:#111}}
+
+    @media (max-width:600px){ .page-container{width:94%} }
   </style>
 </head>
 <body>
-  <div style="width:100%;max-width:960px;padding:20px;">
-    <a class="back" href="{index_rel}">← 返回首页</a>
+  <header class="navbar"><div class="logo">Xart</div></header>
+  <main class="page-container">
+    <div class="back-wrap"><a class="back" href="{index_rel}">← 返回首页</a></div>
+
     <div class="video-card">
       <div class="video-wrap">
         <video controls preload="metadata" poster="{poster_rel}">
@@ -116,7 +133,7 @@ VIDEO_PAGE_TEMPLATE = '''<!DOCTYPE html>
         <p class="video-subtitle">{subtitle}</p>
       </div>
     </div>
-  </div>
+  </main>
 </body>
 </html>
 '''
