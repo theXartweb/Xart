@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>软萌视频播放器</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #fff7fb;
+      font-family: "Nunito", "PingFang SC", sans-serif;
+    }
+
+    .video-card {
+      width: min(90vw, 720px);
+      padding: 14px;
+      border-radius: 28px;
+      background: #ffffff;
+      box-shadow:
+        0 12px 35px rgba(255, 170, 200, 0.22),
+        0 4px 12px rgba(255, 180, 210, 0.12);
+    }
+
+    .video-wrap {
+      position: relative;
+      overflow: hidden;
+      border-radius: 22px;
+      background: #ffeef6;
+    }
+
+    video {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+    }
+
+    /* 小装饰 */
+    .deco {
+      position: absolute;
+      pointer-events: none;
+      font-size: 24px;
+      filter: drop-shadow(0 3px 4px rgba(255, 150, 190, .2));
+    }
+
+    .deco.one {
+      top: 12px;
+      left: 14px;
+      transform: rotate(-12deg);
+    }
+
+    .deco.two {
+      right: 15px;
+      bottom: 12px;
+      transform: rotate(10deg);
+    }
+
+    .video-info {
+      padding: 14px 6px 2px;
+    }
+
+    .video-title {
+      margin: 0;
+      color: #6f5260;
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .video-subtitle {
+      margin: 6px 0 0;
+      color: #b28d9d;
+      font-size: 13px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="video-card">
+
+    <div class="video-wrap">
+      <video
+        controls
+        preload="metadata"
+        poster="poster.jpg"
+      >
+        <source src="cute-video.mp4" type="video/mp4" />
+        你的浏览器不支持 HTML5 视频播放。
+      </video>
+
+      <span class="deco one">♡</span>
+      <span class="deco two">✦</span>
+    </div>
+
+    <div class="video-info">
+      <h2 class="video-title">🎀zhehaya自豪地采用chatgpt开发视频元素</h2>
+      <p class="video-subtitle">简介处（待自动填入简介）</p>
+    </div>
+    
+  </div>
+
+</body>
+</html>
