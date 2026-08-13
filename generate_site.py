@@ -68,7 +68,7 @@ INDEX_TEMPLATE = '''<!DOCTYPE html>
       {cards}
     </div>
   </main>
-  <footer>生成于 generate_site.py</footer>
+  <footer></footer>
 </body>
 </html>
 '''
@@ -137,7 +137,7 @@ def slugify(name: str) -> str:
 
 
 def extract_thumbnail(video_path: Path, out_path: Path) -> bool:
-    """Use OpenCV to grab the first frame of the video as a thumbnail."""
+    """Use OpenCV to grab a stable thumbnail from near 5 seconds or frame 120."""
     out_path.parent.mkdir(parents=True, exist_ok=True)
     if cv2 is None:
         return False
@@ -147,9 +147,18 @@ def extract_thumbnail(video_path: Path, out_path: Path) -> bool:
         return False
 
     try:
+        # Prefer a stable frame around 5s if the video has enough length.
+        cap.set(cv2.CAP_PROP_POS_MSEC, 5000)
         ok, frame = cap.read()
+
+        if not ok or frame is None:
+            # Fallback: read exact frame 120 if seeking to time isn't feasible.
+            cap.set(cv2.CAP_PROP_POS_FRAMES, 120)
+            ok, frame = cap.read()
+
         if not ok or frame is None:
             return False
+
         return bool(cv2.imwrite(str(out_path), frame))
     finally:
         cap.release()
@@ -219,7 +228,7 @@ def main():
     index_content = INDEX_TEMPLATE.replace('{cards}', '\n'.join(cards_html))
     (ROOT / 'index.html').write_text(index_content, encoding='utf-8')
     print(f"生成主页：{ROOT / 'index.html'}")
-    print("完成。使用 OpenCV 首帧提取缩略图，不依赖外部视频工具。")
+    print("完成。")
 
 
 if __name__ == '__main__':
